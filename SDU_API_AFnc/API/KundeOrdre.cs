@@ -16,8 +16,8 @@ namespace SDU_API_AFnc.API
     public static class KundeOrdre
     {
         [FunctionName("KundeOrdre")]
-        public static async Task<IActionResult> RunAsync(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "customer/{customerId}")] HttpRequest req,
+        public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "CustomerOrders/{customerId}")] HttpRequest req,
         string customerId,
         ILogger log)
         {
@@ -30,33 +30,22 @@ namespace SDU_API_AFnc.API
             }
 
             SDU_API_Models_CustomerOrder.KundeOrdre customer = await GetCustomerByIdAsync(customerId);
+            dynamic data=JsonConvert.SerializeObject(customer);
 
             if (customer == null)
             {
                 return new NotFoundResult();
             }
 
-            return new OkObjectResult(customer);
+            return new OkObjectResult(data);
         }
 
         private static async Task<SDU_API_Models_CustomerOrder.KundeOrdre> GetCustomerByIdAsync(string customerId)
         {
-            // Logic to retrieve the customer information from a data source (e.g., database)
-            // Replace this with your own implementation
+            SDU_API_Models_CustomerOrder.KundeOrdre customer = null;
 
-            // Simulate an asynchronous operation
-            await Task.Delay(TimeSpan.FromSeconds(1));
-
-            // Sample code to create a Customer object
-            SDU_API_Models_CustomerOrder.KundeOrdre customer = new SDU_API_Models_CustomerOrder.KundeOrdre();
-
-            customer.Kunde.Id = 1;
-            customer.Kunde.Firma = "test";
-
-            customer.Ordre = new Ordre[2];
-            customer.Ordre[0].Id = 1;
-            customer.Ordre[1].Id = 2;
-
+            await Task.Run(() => { customer = DAL.CustomerOrder.GetCustomerOrders(customerId); });
+            
             return customer;
         }
     }

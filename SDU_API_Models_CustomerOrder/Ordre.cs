@@ -26,3 +26,4 @@ namespace SDU_API_Models_CustomerOrder
         public string Momsstatus { get; set; }
         public int Status_id { get; set; }
     }
+}

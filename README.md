@@ -1,9 +1,12 @@
 ### API beskrivelse ###
-Der eksponeres data for for kunder og ordre
+Der eksponeres data for for kunder og ordre.
+
+Vurdering af disse parametre for at kunne allokere den best muligt.
 ## Datakilder ##
 MSSQL
+ADO.Net
 ## Trigger ##
-Http request -> post
+Http request -> get
 ## Routing ##
 
 ## Rettigheder ##

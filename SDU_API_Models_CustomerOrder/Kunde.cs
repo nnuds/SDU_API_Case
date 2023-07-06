@@ -24,6 +24,6 @@ namespace SDU_API_Models_CustomerOrder
         public string Land_omraede { get; set; }
         public string Webside { get; set; }
         public string Noter { get; set; }
-        public byte[] Vedhæftede_filer { get; set; }
+        public byte[] Vedhaeftede_filer { get; set; }
     }
 }
