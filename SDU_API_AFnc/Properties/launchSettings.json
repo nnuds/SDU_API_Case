@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "SDU_API_AFnc": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7166",
+      "launchBrowser": false
+    }
+  }
+}
